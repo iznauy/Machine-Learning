@@ -79,7 +79,14 @@ def naiveSMO(dataMatIn, classLabels, C, toler, maxIter):
     return b, alphas
 
 
-
+def calcWs(alphas, dataArr, classLabels):
+    X = np.mat(dataArr)
+    labelMat = np.mat(classLabels).transpose()
+    m, n = X.shape
+    w = np.zeros((n, 1))
+    for i in range(m):
+        w += np.multiply(alphas[i] * labelMat[i], X[i, :].T)
+    return w
 
 
 
