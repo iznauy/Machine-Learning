@@ -16,8 +16,12 @@ def locallyWeightedLinearRegression(testPoint, xArr, yArr, k=0.5):
 
 
 def lwlrTest(testArr, xArr, yArr, k=0.5):
-    m = testArr.shape[0]
+    m = np.shape(testArr)[0]
     yHat = np.zeros(m)
     for i in range(m):
         yHat[i] = locallyWeightedLinearRegression(testArr[i], xArr, yArr, k)
     return yHat
+
+
+def rssError(yArr, yHatArr):
+    return ((yArr - yHatArr) ** 2).sum()
